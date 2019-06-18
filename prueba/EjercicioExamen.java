@@ -272,16 +272,17 @@ public class EjercicioExamen {
           String resultado = "";
           String resultado_1 = "";
           boolean comprueba = false;
+          boolean cLinea = false;
 
           while (linea != null) {
             linea = br.readLine();
 
             if (linea != null) {
-
+              cLinea = true;
               resultado += linea + "\n"; // escribe linea a linea en esta variable
               if (linea.contains("//")) {
                 linea = "";
-                comprueba = false;
+                cLinea = false;
               }
               if (linea.contains("/*")) {
                 linea = "";
@@ -298,7 +299,7 @@ public class EjercicioExamen {
                 comprueba = false;
 
               } else {
-                if (comprueba == false) {
+                if (cLinea != false && comprueba == false ) {
                   resultado_1 += linea + "\n"; // escribe linea a linea en esta variable
                   bw.write(linea); // escribe en el fichero
                   bw.newLine(); // hace un salto de linea a la hora de escribir en el fichero
